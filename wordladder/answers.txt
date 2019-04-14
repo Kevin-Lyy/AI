@@ -1,0 +1,8 @@
+aided,xylem
+aided,aired,sired,shred,shied,shies,shims,shams,shads,shady,shaky,snaky
+aided,aired,sired,shred,shied,shies,shims,shams,scams,scamp,scalp,scald,scold
+aided,aired,wired,wires,wares,warns,wains,gains,grins,grips,gript,grist,wrist,whist
+aided,aides,sides,sines,sings,singe,since,wince,winch,cinch,conch,coach,poach,pooch,hooch
+aided,aides,hides,hires,heres,herds,heads,heady,heavy,heave,helve,halve,valve,value,vague,vogue,rogue
+aided,aired,sired,shred,shied,shier,sheer,cheer,cheep,cheap,cheat,cleat,bleat,bloat,float,flout,clout,cloud,aloud
+snaky,snake,slake,slate,slats,seats,meats,melts,malts,matts,maths,laths,lathe,lithe,litre,mitre,metre,metro,retro,retry

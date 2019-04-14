@@ -1,0 +1,11 @@
+fawn,ciao
+fawn,lawn,laws,haws,hats
+fawn,fain,fail,foil,foul,four
+fawn,sawn,saws,sews,seas,seam,swam,swag
+fawn,fain,fair,hair,heir,hear,tear,tzar,czar
+fawn,dawn,damn,dams,dims,dies,dyes,eyes,eves,ever
+fawn,fain,wain,wait,whit,shit,suit,quit,quid,quad,quay
+fawn,dawn,damn,dams,dims,aims,ails,alls,ally,ably,able,abbe
+ergs,eras,bras,brat,beat,seat,shat,shit,suit,quit,quid,quad,quay
+ergo,ergs,eras,bras,brat,beat,seat,shat,shit,suit,quit,quid,quad,quay
+ilia,ilea,plea,pled,peed,peek,peck,pack,pace,mace,mach,each,etch,itch,inch
