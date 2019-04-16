@@ -1,28 +1,19 @@
 #! /usr/bin/python
 import sys
 
-with open("boards.txt","r") as r:
-    temp = r.read().split('\n')
+input = open(sys.argv[1],"r").read().split("\n")
+output = open(sys.argv[2],"w")
 
-nums = [1,2,3,4,5,6,7,8,9]
-boards=[]
-for x in temp:
-	x = x.split(',')
-	for y in x:
-		boards.append(y)
-boards = boards[:-1]
+def getBoard():
+    index = input.index(sys.argv[3])
+    board = list()
+    for line in input[index+1:index+10]:
+        line = line.split(',')
+    	for y in line:
+    		board.append(y)
+    return board
 
-tracker = [0] * len(boards)
-def cleantracker(board):
-    t = 0
-    while t < len(boards):
-        if(boards[t] == '_'):
-            pass
-        else:
-            tracker[t] = -1
-        t += 1
-
-cleantracker(boards)
+boards = getBoard()
 
 Cliques=[[0,1,2,3,4,5,6,7,8],\
 [9,10,11,12,13,14,15,16,17],\
@@ -60,7 +51,6 @@ def printboard(board):
         temp.append(board[lenb])
         if len(temp) == 9:
             print(temp)
-            #print('\n')
             temp = []
         lenb += 1
 
@@ -79,74 +69,43 @@ def checkboard(board,index):
                     j = i + 1
     return True
 
-def forced():
-    box = 0
-
-    while box < len(boards):
-        if tracker[box] != -1:
-            num = 0
-            temp = []
-            while num < len(nums):
-                boards[box] = str(nums[num])
-
-                if(checkboard(boards,box) == True):
-                    temp.append(nums[num])
-
-                if(len(temp) == 1):
-                    boards[box] = str(temp[0])
-                else:
-                    boards[box] = '_'
-
-                num += 1
-
-            tracker[box] = temp
-        box += 1
-        cleantracker(boards)
-
+def findEmpty():
+    for i in range(len(boards)):
+        if boards[i] == "_":
+            return i
+    return None
 
 def sudoku():
-    forced()
-    box = 0
-    backtrack = 0
+    box = findEmpty()
+    if box is None:
+        #if board is filled
+        #index = sys.argv[3].index("unsolved")
+        #output.write(sys.argv[3][:index] + sys.argv[3][index + 2:] + '\n')
+        x = 0
+        temp =[]
+        while x < len(boards):
+            temp.append(boards[x])
+            if len(temp) == 9:
+                for y in temp:
+                    output.write(y)
+                    if(y == temp[len(temp)-1]):
+                        output.write('\n')
+                    else:
+                        output.write(',')
+                temp = []
+            x +=1
+        return boards
+    else:
+        #looks through options of spot
+        for num in range(1,10):
+            boards[box] = str(num) #places number into board
+            if(checkboard(boards,box) == True): #if placement works -> recursion
+                sudoku()
+        boards[box] = "_" #if all options failed, replace number with "_" and backtrack
+        return False
 
-    while box < len(boards):
-        if tracker[box] != -1:
+#485
+#35172
+#49582
 
-            if backtrack == 0:
-                num = 0
-            else:
-                #how do i go to the next available option
-                box -= 2
-                while tracker[box] > 0:
-                    if tracker[box] != -1:
-                        num = backtrack
-                    box -= 1
-
-            #looks through options of spot
-            while num < len(tracker[box]):
-                boards[box] = str(tracker[box][num])
-
-                if(checkboard(boards,box) == True):
-                    #breks and moves on board placement
-                    backtrack = 0
-                    break
-
-                if(checkboard(boards,box) == False):
-                    #look through the next numbers in nums
-                    boards[box] = '_'
-                    num += 1
-
-                #no number works, this is where backtrack occurs
-                if(num == len(tracker[box])):
-                    boards[box] = '_'
-                    backtrack += 1
-
-        box += 1
-
-
-printboard(boards)
 sudoku()
-#forced()
-print('\n-------------------------------------------------\n')
-#printboard(tracker)
-printboard(boards)
